@@ -1,0 +1,20 @@
+
+name: Laboratorio Virtual Agent HQ
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependencias
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+      - name: Ejecutar pruebas
+        run: npx playwright test
